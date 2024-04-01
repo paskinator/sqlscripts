@@ -1,4 +1,4 @@
-go
+
   select 
    DATEFROMPARTS(year(orderdate),MONTH(orderdate),day(orderdate)) as shortstartdate
   ,EOMONTH(DATEFROMPARTS(year(orderdate),MONTH(orderdate),day(orderdate))) as eomonthmonth
@@ -36,10 +36,3 @@ go
   go
   drop table #lateorders ;
   go
-
-
-  declare @sql nvarchar(max)
-select @sql = isnull(@sql+';', '') + 'drop table ' + quotename(name)
-from tempdb..sysobjects
-where name like '##%'
-exec (@sql)
